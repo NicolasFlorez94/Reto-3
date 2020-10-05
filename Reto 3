@@ -1,0 +1,55 @@
+listaProductos = []
+cantidadProductos = []
+precioProductos = []
+
+def primeraFuncion():
+    productoNuevo = input()
+    cantidadNueva = int(input())
+    precioNuevo = int(input())
+    listaProductos.append(productoNuevo)
+    cantidadProductos.append(cantidadProductos)
+    precioProductos.append(precioProductos)
+
+def calculaDescuento(valorTotal):
+  if (valorTotal >= 150000) and (valorTotal <= 300000):
+    descuento = valorTotal * 0.1
+  elif (valorTotal > 300000) and (valorTotal <= 700000):
+    descuento =  valorTotal * 0.15
+  elif valorTotal > 700000:
+    descuento =  valorTotal * 0.2
+  else:
+    descuento = 0
+  return descuento
+
+def imprimirFactura():
+    print ("Centro Comercial Unaleño")
+    print ("Compra más y Gasta Menos")
+    print ("NIT 899.999.063")
+    print ("Cliente: " + str(cedulaCliente))
+    print ("Art Cant Precio")
+    variableNumero = len(listaProductos)
+    contadorProductos = 0
+    while contadorProductos != variableNumero:
+        print (str(listaProductos[contadorProductos]) + str(cantidadProductos[contadorProductos]) + str(precioProductos[contadorProductos]))
+        contadorProductos += 1
+    valorTotal = 99999 #Este valor es solo para probar ¿Como puedo programar la suma?
+    calculaDescuento(valorTotal)
+    print ("En esta compra tu descuento fue $" + str(descuento))
+    print ("Gracias por tu compra")
+
+def segundaFuncion():
+    cedulaCliente = input()
+    imprimirFactura
+
+def start():
+    while True:
+        accionUsuario = input()
+        
+        if accionUsuario == 1:
+            primeraFuncion
+
+        elif accionUsuario == 2:
+            segundaFuncion
+        
+        elif accionUsuario == 3:
+            return
