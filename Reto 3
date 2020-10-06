@@ -1,31 +1,32 @@
 listaProductos = []
 cantidadProductos = []
 precioProductos = []
-accionUsuario = 0
+listaTotalProducto = []
+cedulaCliente = 0
+dividedInput = ["placeholder"]
 
 def primeraFuncion():
-    productoNuevo = input()
-    cantidadNueva = int(input())
-    precioNuevo = int(input())
+    productoNuevo = dividedInput[1]
+    cantidadNueva = int(dividedInput[2])
+    precioNuevo = int(dividedInput[3])
     listaProductos.append(productoNuevo)
-    cantidadProductos.append(cantidadProductos)
-    precioProductos.append(precioProductos)
+    cantidadProductos.append(cantidadNueva)
+    precioProductos.append(precioNuevo)
+    totalProducto = int(dividedInput[2]) * int(dividedInput[3])
+    listaTotalProducto.append(totalProducto)
+    return
 
-def calcularVenta(total):
-  if 300000 >= total > 150000:
-    return math.floor(total*0.10)
-  elif 700000 >= total > 300000:
-    return math.floor(total*0.15)
-  elif total > 700000:
-    return math.floor(total*0.20)
+
+def calculaDescuento(valorTotal):
+  if (valorTotal >= 150000) and (valorTotal <= 300000):
+    descuento = valorTotal * 0.1
+  elif (valorTotal > 300000) and (valorTotal <= 700000):
+    descuento =  valorTotal * 0.15
+  elif valorTotal > 700000:
+    descuento =  valorTotal * 0.2
   else:
-  return total
-
-x = math.ceil(int(total)) - math.ceil(int(calcularVenta(total)))
-
-def segundaFuncion():
-    cedulaCliente = input()
-    imprimirFactura
+    descuento = 0
+  return descuento
 
 def imprimirFactura():
     print ("Centro Comercial Unaleño")
@@ -36,21 +37,33 @@ def imprimirFactura():
     variableNumero = len(listaProductos)
     contadorProductos = 0
     while contadorProductos != variableNumero:
-        print (str(listaProductos[contadorProductos]) + str(cantidadProductos[contadorProductos]) + str(precioProductos[contadorProductos]))
-        contadorProductos += 1
-    valorTotal = 99999 #Este valor es solo para probar ¿Como puedo programar la suma?
+      print (str(listaProductos[contadorProductos]) + str(cantidadProductos[contadorProductos]) + str(precioProductos[contadorProductos]))
+      contadorProductos += 1
+    valorTotal = 0
+    contaSumaTotal = 0
+    while contaSumaTotal != variableNumero:
+      valorTotal = valorTotal + listaTotalProducto[contaSumaTotal]
+      contaSumaTotal += 1
+    print (valorTotal)
     calculaDescuento(valorTotal)
     print ("En esta compra tu descuento fue $" + str(descuento))
     print ("Gracias por tu compra")
+    return
 
-def start():
-    while accionUsuario != 3:
-        accionUsuario = input()
-        
-        if accionUsuario == 1:
-            primeraFuncion
+def segundaFuncion():
+    cedulaCliente = dividedInput[1]
+    imprimirFactura()
+    return
 
-        elif accionUsuario == 2:
-            segundaFuncion
 
-start()
+while dividedInput[0] != 3:
+  if dividedInput[0] == "placeholder":
+    deletedValue = dividedInput.pop(0)
+  inputCommand = input()
+  dividedInput = inputCommand.split("&")
+
+  if dividedInput[0] == 1:
+    primeraFuncion()
+
+  if dividedInput[0] == 2:
+    segundaFuncion()
