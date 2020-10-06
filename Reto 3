@@ -11,16 +11,21 @@ def primeraFuncion():
     cantidadProductos.append(cantidadProductos)
     precioProductos.append(precioProductos)
 
-def calculaDescuento(valorTotal):
-  if (valorTotal >= 150000) and (valorTotal <= 300000):
-    descuento = valorTotal * 0.1
-  elif (valorTotal > 300000) and (valorTotal <= 700000):
-    descuento =  valorTotal * 0.15
-  elif valorTotal > 700000:
-    descuento =  valorTotal * 0.2
+def calcularVenta(total):
+  if 300000 >= total > 150000:
+    return math.floor(total*0.10)
+  elif 700000 >= total > 300000:
+    return math.floor(total*0.15)
+  elif total > 700000:
+    return math.floor(total*0.20)
   else:
-    descuento = 0
-  return descuento
+  return total
+
+x = math.ceil(int(total)) - math.ceil(int(calcularVenta(total)))
+
+def segundaFuncion():
+    cedulaCliente = input()
+    imprimirFactura
 
 def imprimirFactura():
     print ("Centro Comercial Unaleño")
@@ -37,10 +42,6 @@ def imprimirFactura():
     calculaDescuento(valorTotal)
     print ("En esta compra tu descuento fue $" + str(descuento))
     print ("Gracias por tu compra")
-
-def segundaFuncion():
-    cedulaCliente = input()
-    imprimirFactura
 
 def start():
     while accionUsuario != 3:
